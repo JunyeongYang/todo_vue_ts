@@ -12,11 +12,11 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 
 @Component
 export default class Children extends Vue {
-  alertMessage: string = ''
+  public alertMessage: string = ''
   @Prop() private childrenMessage?: string
 
   @Watch('childrenMessage')
-  update() {
+  public update() {
     this.alertMessage = '변경'
   }
 }

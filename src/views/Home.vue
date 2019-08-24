@@ -24,7 +24,7 @@ import Children from '@/components/Children.vue'
 export default class Home extends Vue {
   public message: string = 'hello world'
 
-  changeMessage() {
+  public changeMessage() {
     this.message = 'changed Message'
   }
 }
