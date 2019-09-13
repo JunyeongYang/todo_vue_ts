@@ -3,8 +3,10 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
     <Message message="프롭스"/>
-    <Children :childrenMessage="message" />
+    <Children @counter="counter" />
+    <p>{{ count }}</p>
     <button @click="changeMessage">Change Message</button>
+    {{count}}
   </div>
 </template>
 
@@ -22,6 +24,12 @@ import Children from '@/components/Children.vue'
   },
 })
 export default class Home extends Vue {
+  count:number = 0
+
+  counter() {
+    this.count++
+  }
+
   public message: string = 'hello world'
 
   public changeMessage() {
