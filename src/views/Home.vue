@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 import Message from '@/components/Message.vue'
 import Children from '@/components/Children.vue'
@@ -24,16 +24,19 @@ import Children from '@/components/Children.vue'
   },
 })
 export default class Home extends Vue {
-  count:number = 0
+  private message: string = 'hello world'
+  private count: number = 0
 
-  counter() {
+  @Provide('message') private msg: string = "Provide/Injdex example"
+
+  private changeMessage() {
+    this.message = 'changed Message'
+  }
+
+  private counter() {
     this.count++
   }
 
-  public message: string = 'hello world'
 
-  public changeMessage() {
-    this.message = 'changed Message'
-  }
 }
 </script>
