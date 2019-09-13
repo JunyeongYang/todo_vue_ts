@@ -12,14 +12,15 @@
 </template>
 
 <script lang="ts">
-  import {Vue, Component} from 'vue-property-decorator'
+  import {Vue, Component, Mixins} from 'vue-property-decorator'
+  import Toggle from './Index.vue'
 
-  @Component
-  export default class Accordion extends Vue{
-    public show: boolean = false
-    public toggle() {
-      this.show = !this.show
+  @Component({
+    components: {
+      Toggle,
     }
+  })
+  export default class Accordion extends Mixins(Toggle){
   }
 </script>
 
