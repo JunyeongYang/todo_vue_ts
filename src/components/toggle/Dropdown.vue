@@ -1,5 +1,6 @@
 <template>
   <div class="dropdown">
+    <span>{{ text }}</span>
     <button class="btn btn-secondary dropdown-toggle" @click="toggle" type="button" id="dropdownMenuButton"
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown button
@@ -14,7 +15,8 @@
 
 <script lang="ts">
   import {Vue, Component, Mixins} from 'vue-property-decorator'
-  import Toggle from './Accordion.vue'
+  import Toggle from './Index.vue'
+  import eventBus from '@/common/event-bus.ts'
 
   @Component({
     components: {
@@ -22,6 +24,10 @@
     }
   })
   export default class Dropdown extends Mixins(Toggle){
+    private text: string = ''
+    created() {
+      eventBus.$on('sendText', (text: string) => this.text = text)
+    }
   }
 </script>
 

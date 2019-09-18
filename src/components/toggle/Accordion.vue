@@ -1,5 +1,7 @@
 <template>
   <div class="card">
+    <input v-model="text">
+    <button @click="click">sendText</button>
     <div class="card-header" @click="toggle">
       Featured
     </div>
@@ -14,6 +16,7 @@
 <script lang="ts">
   import {Vue, Component, Mixins} from 'vue-property-decorator'
   import Toggle from './Index.vue'
+  import eventBus from '@/common/event-bus.ts'
 
   @Component({
     components: {
@@ -21,6 +24,10 @@
     }
   })
   export default class Accordion extends Mixins(Toggle){
+    private text: string = ''
+    private click() {
+      eventBus.$emit('sendText', this.text)
+    }
   }
 </script>
 
